@@ -5,7 +5,7 @@
 
 int main()
 {
-
+    int c;
     int n, sum = 0;
     scanf("%d", &n);
     int *arr = (int *)malloc(n * sizeof(int));
