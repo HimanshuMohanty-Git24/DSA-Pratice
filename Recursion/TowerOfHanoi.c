@@ -1,5 +1,5 @@
 #include <stdio.h>
-void TOH(int n, int A, int B, int C)
+void TOH(int n, int A, int B, int C) // Time complexcity is O(2^n)
 {
     if (n > 0)
     {
