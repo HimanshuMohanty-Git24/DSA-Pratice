@@ -20,7 +20,7 @@ int power(int m, int n)
 int main()
 {
     // Write C code here
-    printf("%d", power(2, 50));
+    printf("%d", power(2, 10));
 
     return 0;
 }
