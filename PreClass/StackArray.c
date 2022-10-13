@@ -1,7 +1,30 @@
+// Stack implememtaion using array
 #include <stdio.h>
 #define N 50
 int stack[N];
 int top = -1;
+void isempty()
+{
+    if (top == -1)
+    {
+        printf("\nStack is empty\n");
+    }
+    else
+    {
+        printf("\nStack is not empty\n");
+    }
+}
+void isfull()
+{
+    if (top == N)
+    {
+        printf("\nStack is full\n");
+    }
+    else
+    {
+        printf("\nStack is not full\n");
+    }
+}
 void push()
 {
     int x;
@@ -66,6 +89,8 @@ int main()
     printf("\nPress 2 to pop\n");
     printf("\npress 3 to peek\n");
     printf("\npress 4 to Display the stack\n");
+    printf("\npress 5 to check if stack is empty\n");
+    printf("\npress 6 to check if stack is full\n");
     printf("\npress 0 to exit the operation\n");
     while (choice != 0)
     {
@@ -84,6 +109,12 @@ int main()
             break;
         case 4:
             display();
+            break;
+        case 5:
+            isempty();
+            break;
+        case 6:
+            isfull();
             break;
         default:
             break;
