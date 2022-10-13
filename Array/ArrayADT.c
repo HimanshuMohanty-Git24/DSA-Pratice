@@ -1,3 +1,4 @@
+// Array ADT
 #include <stdio.h>
 struct Array
 {
