@@ -1,54 +1,86 @@
-// Array ADT
 #include <stdio.h>
+#include <stdlib.h>
 struct Array
 {
-    int A[10];
+    int *A;
     int size;
     int length;
 };
-void Display(struct Array arr)
+void display(struct Array arr)
 {
     int i;
-    printf("\nElements are\n");
+    printf("\nElemen are:\n");
     for (i = 0; i < arr.length; i++)
-        printf("%d ", arr.A[i]);
-}
-void Append(struct Array *arr, int x)
-{
-    if (arr->length < arr->size)
-        arr->A[arr->length++] = x;
-}
-void Insert(struct Array *arr, int index, int x)
-{
-    int i;
-    if (index >= 0 && index <= arr->length)
     {
-        for (i = arr->length; i > index; i--)
-            arr->A[i] = arr->A[i - 1];
-        arr->A[index] = x;
+        printf("%d ", arr.A[i]);
+    }
+}
+void Add(int x, struct Array *arr) // T.C:O(1)
+{
+    if (arr->length == arr->size)
+    {
+        printf("Array is Full");
+    }
+    else
+    {
+        arr->A[arr->length] = x;
         arr->length++;
     }
 }
-int Delete(struct Array *arr, int index)
+void insert(int x, int pos, struct Array *arr) // T.C:O(n)
 {
-    int x = 0;
-    int i;
-    if (index >= 0 && index < arr->length)
+    if (arr->length == arr->size)
     {
-        x = arr->A[index];
-        for (i = index; i < arr->length - 1; i++)
-            arr->A[i] = arr->A[i + 1];
-        arr->length--;
-        return x;
+        printf("Array is Full");
     }
-    return 0;
+    else
+    {
+        for (int i = arr->length; i > pos; i--)
+        {
+            arr->A[i] = arr->A[i - 1];
+        }
+        arr->A[pos] = x;
+        arr->length++;
+    }
+}
+void delete (int pos, struct Array *arr)
+{
+    if (arr->length == 0)
+    {
+        printf("Array is Empty");
+    }
+    if (arr->length == arr->size)
+    {
+        printf("No elemnt as such");
+    }
+    else
+    {
+        for (int i = pos; i < arr->length - 1; i++)
+        {
+            arr->A[i] = arr->A[i + 1];
+        }
+        arr->length--;
+    }
 }
 int main()
 {
-    struct Array arr1 = {{2, 3, 4, 5, 6}, 10, 5};
-    Append(&arr1, 10);
-    Insert(&arr1, 0, 12);
-    printf("%d", Delete(&arr1, 0));
-    Display(arr1);
-    return 0;
+    int n;
+    struct Array arr;
+    printf("Enter size of an array:");
+    scanf("%d", &arr.size);
+    arr.A = (int *)malloc(arr.size * sizeof(int)); // Array is created in heap
+    arr.length = 0;
+    printf("Enter number of numbers:");
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &arr.A[i]);
+    }
+    arr.length = n;
+    display(arr);
+    Add(7, &arr);
+    insert(14, 3, &arr);
+    display(arr);
+    delete (4, &arr);
+    display(arr);
 }
