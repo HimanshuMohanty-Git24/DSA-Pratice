@@ -43,7 +43,7 @@ void insert(int x, int pos, struct Array *arr) // T.C:O(n)
         arr->length++;
     }
 }
-void delete (int pos, struct Array *arr)
+void delete (int pos, struct Array *arr) // T.C:O(n)
 {
     if (arr->length == 0)
     {
@@ -61,6 +61,24 @@ void delete (int pos, struct Array *arr)
         }
         arr->length--;
     }
+}
+int linearSearch(int key, struct Array arr)
+{
+    if (arr.length == 0)
+    {
+        printf("Array is Empty");
+    }
+    else
+    {
+        for (int i = 0; i < arr.length; i++)
+        {
+            if (arr.A[i] == key)
+            {
+                return i;
+            }
+        }
+    }
+    return -1;
 }
 int main()
 {
@@ -83,4 +101,16 @@ int main()
     display(arr);
     delete (4, &arr);
     display(arr);
+    int key;
+    printf("\nEnter the element you want to find\n");
+    scanf("%d", &key);
+    int res = linearSearch(key, arr);
+    if (res == -1)
+    {
+        printf("\nElement not found\n");
+    }
+    else
+    {
+        printf("\nElement found at %d position in the array\n", res);
+    }
 }
