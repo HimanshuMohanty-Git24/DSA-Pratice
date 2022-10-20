@@ -62,7 +62,7 @@ void delete (int pos, struct Array *arr) // T.C:O(n)
         arr->length--;
     }
 }
-int linearSearch(int key, struct Array arr)
+int linearSearch(int key, struct Array arr) // T.c:O(n)
 {
     if (arr.length == 0)
     {

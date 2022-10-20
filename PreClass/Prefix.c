@@ -43,8 +43,6 @@ void main()
 
     int len, val, i, opr1, opr2, res;
 
-    clrscr();
-
     printf("Enter the prefix Expression: ");
 
     scanf("%s", prefix);
@@ -102,6 +100,4 @@ void main()
     }
 
     printf("Result is %d", steck[top]);
-
-    getch();
 }

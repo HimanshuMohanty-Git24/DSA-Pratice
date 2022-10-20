@@ -6,54 +6,6 @@ struct node
     struct node *next;
 };
 struct node *head;
-
-void beginsert();
-void lastinsert();
-void randominsert();
-void begin_delete();
-void last_delete();
-void random_delete();
-void display();
-void search();
-void main()
-{
-    int choice = 0;
-    while (choice != 7)
-    {
-        printf("\n*********Main Menu*********\n");
-        printf("\nChoose one option from the following list ...\n");
-        printf("\n===============================================\n");
-        printf("\n1.Insert in begining\n2.Insert at last\n3.Delete from Beginning\n4.Delete from last\n5.Search for an element\n6.Show\n7.Exit\n");
-        printf("\nEnter your choice?\n");
-        scanf("\n%d", &choice);
-        switch (choice)
-        {
-        case 1:
-            beginsert();
-            break;
-        case 2:
-            lastinsert();
-            break;
-        case 3:
-            begin_delete();
-            break;
-        case 4:
-            last_delete();
-            break;
-        case 5:
-            search();
-            break;
-        case 6:
-            display();
-            break;
-        case 7:
-            exit(0);
-            break;
-        default:
-            printf("Please enter valid choice..");
-        }
-    }
-}
 void beginsert()
 {
     struct node *ptr, *temp;
@@ -171,49 +123,6 @@ void last_delete()
     }
 }
 
-void search()
-{
-    struct node *ptr;
-    int item, i = 0, flag = 1;
-    ptr = head;
-    if (ptr == NULL)
-    {
-        printf("\nEmpty List\n");
-    }
-    else
-    {
-        printf("\nEnter item which you want to search?\n");
-        scanf("%d", &item);
-        if (head->data == item)
-        {
-            printf("item found at location %d", i + 1);
-            flag = 0;
-        }
-        else
-        {
-            while (ptr->next != head)
-            {
-                if (ptr->data == item)
-                {
-                    printf("item found at location %d ", i + 1);
-                    flag = 0;
-                    break;
-                }
-                else
-                {
-                    flag = 1;
-                }
-                i++;
-                ptr = ptr->next;
-            }
-        }
-        if (flag != 0)
-        {
-            printf("Item not found\n");
-        }
-    }
-}
-
 void display()
 {
     struct node *ptr;
@@ -233,5 +142,68 @@ void display()
             ptr = ptr->next;
         }
         printf("%d\n", ptr->data);
+    }
+}
+void insertSpecific()
+{
+    int num, pos;
+    struct node *newnode, *curNode;
+    int i;
+    printf("Enter the pos and data you want to enter:");
+    scanf("%d %d", &num, &pos);
+    if (head == NULL)
+    {
+        printf("List is empty");
+    }
+    else
+    {
+        newnode = (struct node *)malloc(sizeof(struct node));
+        newnode->data = num;
+        curNode = head;
+        for (i = 0; i <= pos - 3; i++)
+        {
+            curNode = curNode->next;
+        }
+        newnode->next = curNode->next;
+        curNode->next = newnode;
+    }
+}
+void main()
+{
+    int choice = 0;
+    while (choice != 8)
+    {
+        printf("\nChoose one option from the following list ...\n");
+        printf("\n1.Insert in begining\n2.Insert at last\n3.Delete from Beginning\n4.Delete from last\n5.Insert at any pos\n6.Delete at any pos\n7.Show\n8.EXIT\n");
+        printf("\nEnter your choice?\n");
+        scanf("\n%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            beginsert();
+            break;
+        case 2:
+            lastinsert();
+            break;
+        case 3:
+            begin_delete();
+            break;
+        case 4:
+            last_delete();
+            break;
+        case 5:
+            insertSpecific();
+            break;
+        case 6:
+
+        case 7:
+            display();
+            break;
+        case 8:
+            exit(0);
+            break;
+        default:
+            printf("Please enter valid choice..");
+        }
     }
 }
