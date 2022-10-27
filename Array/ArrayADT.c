@@ -83,7 +83,7 @@ int linearSearch(int key, struct Array arr) // T.c:O(n)
 int BinarySearch(int l, int h, int key, struct Array arr)
 {
     int mid;
-    while (l < h)
+    while (l <= h)
     {
         mid = l + h / 2;
         if (arr.A[mid] == key)
