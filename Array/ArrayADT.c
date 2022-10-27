@@ -80,6 +80,27 @@ int linearSearch(int key, struct Array arr) // T.c:O(n)
     }
     return -1;
 }
+int BinarySearch(int l, int h, int key, struct Array arr)
+{
+    int mid;
+    while (l < h)
+    {
+        mid = l + h / 2;
+        if (arr.A[mid] == key)
+        {
+            return mid;
+        }
+        else if (arr.A[mid] > key)
+        {
+            h = mid - 1;
+        }
+        else if (arr.A[mid] < key)
+        {
+            l = mid + 1;
+        }
+    }
+    return -1;
+}
 int main()
 {
     int n;
@@ -101,16 +122,44 @@ int main()
     display(arr);
     delete (4, &arr);
     display(arr);
-    int key;
-    printf("\nEnter the element you want to find\n");
-    scanf("%d", &key);
-    int res = linearSearch(key, arr);
-    if (res == -1)
+    int choice = 10;
+    int key, res;
+    printf("\n\nEnter which way you want to search\n1.Linear Search\n2.Binary Search\n0.EXIT\n");
+    while (choice != 0)
     {
-        printf("\nElement not found\n");
-    }
-    else
-    {
-        printf("\nElement found at %d position in the array\n", res);
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            printf("\nEnter the element you want to find\n");
+            scanf("%d", &key);
+            res = linearSearch(key, arr);
+            if (res == -1)
+            {
+                printf("\nElement not found\n");
+            }
+            else
+            {
+                printf("\nElement found at %d position in the array\n", res);
+            }
+            exit(1);
+            break;
+        case 2:
+            printf("\nEnter the element you want to find\n");
+            scanf("%d", &key);
+            res = BinarySearch(0, arr.length, key, arr);
+            if (res == -1)
+            {
+                printf("\nElement not found\n");
+            }
+            else
+            {
+                printf("\nElement found at %d position in the array\n", res);
+            }
+            exit(1);
+            break;
+        default:
+            break;
+        }
     }
 }
