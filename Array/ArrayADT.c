@@ -80,7 +80,22 @@ int linearSearch(int key, struct Array arr) // T.c:O(n)
     }
     return -1;
 }
-int BinarySearch(int l, int h, int key, struct Array arr)
+int linRec(int m, int arr[], int key) // Recursive method of linear search
+{
+    if (m < 0)
+    {
+        return -1;
+    }
+    if (arr[m] == key)
+    {
+        return m;
+    }
+    else
+    {
+        return linSear(m - 1, arr, key);
+    }
+}
+int BinarySearch(int l, int h, int key, struct Array arr) // T.C:O(log n)
 {
     int mid;
     while (l <= h)
@@ -101,6 +116,27 @@ int BinarySearch(int l, int h, int key, struct Array arr)
     }
     return -1;
 }
+int BsRec(int a[], int key, int low, int high) // Binary Search Recursive method
+{
+    if (low > high)
+    {
+        return -1;
+    }
+    int mid = (low + high) / 2;
+    if (a[mid] == key)
+    {
+        return mid;
+    }
+    if (key > a[mid])
+    {
+        return binarysearch(a, key, mid + 1, high);
+    }
+    else
+    {
+        return binarysearch(a, key, low, mid - 1);
+    }
+}
+
 int main()
 {
     int n;
