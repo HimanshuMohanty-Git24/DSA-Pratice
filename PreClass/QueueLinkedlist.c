@@ -78,7 +78,8 @@ int main()
     printf("\n1. Enqueue\n");
     printf("\n2. Dequeue\n");
     printf("\n3. Display\n");
-    printf("\n4. To exit\n");
+    printf("\n4.Peek\n");
+    printf("\n5. To exit\n");
     while (1)
     {
         printf("\nEnter your choice:");
@@ -95,6 +96,9 @@ int main()
             display();
             break;
         case 4:
+            peek();
+            break;
+        case 5:
             exit(1);
             break;
         default:
