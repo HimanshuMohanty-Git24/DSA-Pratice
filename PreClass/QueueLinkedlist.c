@@ -5,52 +5,70 @@ struct node
     int data;
     struct node *next;
 };
-struct node *head = NULL;
+struct node *front = NULL;
+struct node *tail = NULL;
 void enqueue()
 {
     struct node *new_node = (struct node *)malloc(sizeof(struct node));
     printf("\nEnter the data you want to insert:");
     scanf("%d", &new_node->data);
-    if (head == NULL)
-        head = new_node;
+    new_node->next = NULL;
+    if (front == NULL && tail == NULL)
+        front = tail = new_node;
     else
     {
-        struct node *temp = NULL;
-        for (temp = head; temp->next != NULL; temp = temp->next)
-            ;
-        temp->next = new_node;
+        tail->next = new_node;
+        tail = new_node;
     }
 }
 void dequeue()
 {
     struct node *toDelete;
 
-    if (head == NULL)
+    if (front == NULL && tail == NULL)
     {
-        printf("List is already empty.");
+        printf("\nQueue is empty\n");
     }
     else
     {
-        toDelete = head;
-        head = head->next;
+        toDelete = front;
+        front = front->next;
 
         printf("\nData deleted = %d\n", toDelete->data);
 
-        /* Clears the memory occupied by first node*/
         free(toDelete);
 
-        printf("SUCCESSFULLY DELETED FIRST NODE FROM LIST\n");
+        printf("\nSUCCESSFULLY DELETED\n");
+    }
+}
+void peek()
+{
+
+    if (front == NULL && tail == NULL)
+    {
+        printf("\nQueue is empty\n");
+    }
+    else
+    {
+        printf("\nFront data is :%d\n", front->data);
     }
 }
 void display()
 {
-    printf("\nThe Queue is :\n");
-    struct node *temp = head;
-    do
+    if (front == NULL && tail == NULL)
     {
-        printf("%d ", temp->data);
-        temp = temp->next;
-    } while (temp != NULL);
+        printf("\nQueue is empty\n");
+    }
+    else
+    {
+        printf("\nThe Queue is :\n");
+        struct node *temp = front;
+        do
+        {
+            printf("%d ", temp->data);
+            temp = temp->next;
+        } while (temp != NULL);
+    }
 }
 int main()
 {
