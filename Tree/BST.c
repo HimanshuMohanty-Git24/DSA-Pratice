@@ -26,5 +26,6 @@ struct node *create()
 int main()
 {
     struct node *root;
+    root = NULL;
     root = create();
 }
