@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "*.ejs": "html",
-    "string.h": "c"
+    "string.h": "c",
+    "iostream": "cpp"
   }
 }
