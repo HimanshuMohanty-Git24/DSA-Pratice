@@ -10,7 +10,7 @@ struct node *create()
     int x;
     struct node *newnode;
     newnode = (struct node *)malloc(sizeof(struct node));
-    printf("\nEnter the data you want to insert:");
+    printf("\nEnter the data you want to insert(enter -1 for no node):");
     scanf("%d", &x);
     if (x == -1)
     {
