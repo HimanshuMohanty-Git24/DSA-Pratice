@@ -5,6 +5,16 @@ struct node
     int data;
     struct node *left, *right;
 };
+struct node *Search(struct node *root, int key)
+{
+    if (root == NULL || root->data == key)
+        return root;
+
+    if (root->data < key)
+        return Search(root->right, key);
+
+    return Search(root->left, key);
+}
 struct node *create()
 {
     int x;
@@ -65,4 +75,15 @@ int main()
     Inorder(root);
     printf("\nPostorder Traversal\n");
     Postorder(root);
+    struct node *found;
+    printf("\nSearching an element\n");
+    found = Search(root, 10);
+    if (found != NULL)
+    {
+        printf("\nFound %d !!!\n", found->data);
+    }
+    else
+    {
+        printf("\nElement not found\n");
+    }
 }
