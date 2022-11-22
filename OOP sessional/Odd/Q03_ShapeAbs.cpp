@@ -9,40 +9,49 @@ class shape
 public:
     virtual void area() = 0;
 };
+
 class circle : public shape
 {
     float r;
 
 public:
+    circle(float radius)
+    {
+        r = radius;
+    }
     void area()
     {
-        cout << "\nEnter radius : ";
-        cin >> r;
-        cout << "\nArea of circle : " << (3.141 * r * r);
+        cout << "\nArea of circle : " << (3.14 * r * r);
     }
 };
+
 class triangle : public shape
 {
-
-    int h, b;
-    float a;
+    int side, height;
 
 public:
+    triangle(float s, float h)
+    {
+        side = s;
+        height = h;
+    }
     void area()
     {
-        cout << "\nEnter height : ";
-        cin >> h;
-        cout << "\nEnter breadth : ";
-        cin >> b;
-        a = 0.5 * h * b;
-        cout << "\nArea of triangle : " << a;
+        cout << "\nArea of triangle : " << 0.5 * side * height;
     }
 };
+
 int main()
 {
-    circle c;
-    c.area();
-    triangle t;
-    t.area();
+    shape *s;
+
+    circle c(4);
+    s = &c;
+    s->area();
+
+    triangle t(3, 5);
+    s = &t;
+    s->area();
+
     return 0;
 }
