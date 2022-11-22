@@ -1,6 +1,6 @@
-/*Q4) Write a C++ program to define Shape class. Derive Circle and Triangle classes from the Shape class.
- Define method area in Shape class and override it in classes Circle and Triangle to calculate their area.
- Make necessary assumptions required.*/
+/*Q1) Write and execute a C++ program which create a shape class and derive circle and square class from shape class.
+Define appropriate constructor for all the three classes. Define Find-Area method in shape class and override this
+method in circle and square classes to find their area.*/
 #include <iostream>
 using namespace std;
 class shape
