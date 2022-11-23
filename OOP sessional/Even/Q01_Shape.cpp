@@ -6,45 +6,50 @@ using namespace std;
 class shape
 {
 public:
-    virtual void area()
-    {
-        cout << "This is a virtual class";
-    }
+    virtual void area() = 0;
 };
+
 class circle : public shape
 {
     float r;
 
 public:
+    circle(float radius)
+    {
+        r = radius;
+    }
     void area()
     {
-        cout << "\nEnter radius : ";
-        cin >> r;
-        cout << "\nArea of circle : " << (3.141 * r * r);
+        cout << "\nArea of circle : " << (3.14 * r * r);
     }
 };
-class triangle : public shape
-{
 
-    int h, b;
-    float a;
+class square : public shape
+{
+    int side;
 
 public:
+    square(float s)
+    {
+        side = s;
+    }
     void area()
     {
-        cout << "\nEnter height : ";
-        cin >> h;
-        cout << "\nEnter breadth : ";
-        cin >> b;
-        a = 0.5 * h * b;
-        cout << "\nArea of triangle : " << a;
+        cout << "\nArea of square : " << side * side;
     }
 };
+
 int main()
 {
-    circle c;
-    c.area();
-    triangle t;
-    t.area();
+    shape *s;
+
+    circle c(4);
+    s = &c;
+    s->area();
+
+    square t(5);
+    s = &t;
+    s->area();
+
     return 0;
 }
