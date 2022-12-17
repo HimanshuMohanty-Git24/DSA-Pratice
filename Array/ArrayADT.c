@@ -92,7 +92,7 @@ int linRec(int m, int arr[], int key) // Recursive method of linear search
     }
     else
     {
-        return linSear(m - 1, arr, key);
+        return linRec(m - 1, arr, key);
     }
 }
 int BinarySearch(int l, int h, int key, struct Array arr) // T.C:O(log n)
@@ -129,11 +129,11 @@ int BsRec(int a[], int key, int low, int high) // Binary Search Recursive method
     }
     if (key > a[mid])
     {
-        return binarysearch(a, key, mid + 1, high);
+        return BsRec(a, key, mid + 1, high);
     }
     else
     {
-        return binarysearch(a, key, low, mid - 1);
+        return BsRec(a, key, low, mid - 1);
     }
 }
 int Get(int index, struct Array arr)
@@ -198,6 +198,7 @@ float avg(struct Array arr)
 }
 int main()
 {
+    int index, ele;
     int n;
     struct Array arr;
     printf("Enter size of an array:");
@@ -254,10 +255,24 @@ int main()
             exit(1);
             break;
         case 3:
-            int index;
             printf("\nEnter the index you want the data for:");
             scanf("%d", index);
             printf("\ndata in index %d is:%d\n", index, Get(index, arr));
+            break;
+        case 4:
+
+            printf("\nEnter the index and data you want to set there:");
+            scanf("%d %d", index, ele);
+            set(index, ele, arr);
+            break;
+        case 5:
+            printf("\nMax element in array is:%d\n", max(arr));
+            break;
+        case 6:
+            printf("\nMin element in array is:%d\n", min(arr));
+            break;
+        case 7:
+            printf("\nSum of all element in array is:%d\n", sum(arr));
             break;
         default:
             break;
