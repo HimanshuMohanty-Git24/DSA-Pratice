@@ -253,6 +253,12 @@ int main()
             }
             exit(1);
             break;
+        case 3:
+            int index;
+            printf("\nEnter the index you want the data for:");
+            scanf("%d", index);
+            printf("\ndata in index %d is:%d\n", index, Get(index, arr));
+            break;
         default:
             break;
         }
