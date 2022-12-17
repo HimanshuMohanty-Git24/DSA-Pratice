@@ -43,7 +43,7 @@ void insert(int x, int pos, struct Array *arr) // T.C:O(n)
         arr->length++;
     }
 }
-void delete (int pos, struct Array *arr) // T.C:O(n)
+void delete(int pos, struct Array *arr) // T.C:O(n)
 {
     if (arr->length == 0)
     {
@@ -136,7 +136,39 @@ int BsRec(int a[], int key, int low, int high) // Binary Search Recursive method
         return binarysearch(a, key, low, mid - 1);
     }
 }
-
+int Get(int index, struct Array arr)
+{
+    if (index >= 0 && index < arr.size)
+    {
+        return arr.A[index];
+    }
+    else
+    {
+        return -1;
+    }
+}
+void set(int index, int key, struct Array arr)
+{
+    if (index >= 0 && index < arr.size)
+    {
+        arr.A[index] = key;
+    }
+    else
+    {
+        printf("\nWrong Index Please Try Again...\n");
+    }
+}
+int max(struct Array arr)
+{
+    int max = arr.A[0];
+    for (int i = 1; i < arr.length; i++)
+    {
+        if (arr.A[i] > max)
+        {
+            max = arr.A[i];
+        }
+    }
+}
 int main()
 {
     int n;
