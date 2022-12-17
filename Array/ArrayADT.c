@@ -196,6 +196,16 @@ float avg(struct Array arr)
     float total = sum(arr);
     return total / arr.length;
 }
+void reverse(struct Array *arr)
+{
+    int i, j;
+    for (i = 0, j = arr->length - 1; i < j; i++, j--)
+    {
+        int temp = arr->A[i];
+        arr->A[i] = arr->A[j];
+        arr->A[i] = temp;
+    }
+}
 int main()
 {
     int index, ele;
