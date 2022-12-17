@@ -168,6 +168,33 @@ int max(struct Array arr)
             max = arr.A[i];
         }
     }
+    return max;
+}
+int min(struct Array arr)
+{
+    int min = arr.A[0];
+    for (int i = 1; i < arr.length; i++)
+    {
+        if (arr.A[i] < min)
+        {
+            min = arr.A[i];
+        }
+    }
+    return min;
+}
+int sum(struct Array arr)
+{
+    int sum = 0;
+    for (int i = 0; i < arr.length; i++)
+    {
+        sum = sum + arr.A[i];
+    }
+    return sum;
+}
+float avg(struct Array arr)
+{
+    float total = sum(arr);
+    return total / arr.length;
 }
 int main()
 {
