@@ -252,7 +252,7 @@ void negPosSides(struct Array *arr)
     arr->A[i] = arr->A[j];
     arr->A[j] = temp;
 }
-struct Array *Merge(struct Array *arr1, struct Array *arr2)
+struct Array *Merge(struct Array *arr1, struct Array *arr2) // T.C=O(m+n)
 {
     int i, j, k;
     i = j = k = 0;
