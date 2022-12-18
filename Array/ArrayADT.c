@@ -43,8 +43,10 @@ void insert(int x, int pos, struct Array *arr) // T.C:O(n)
         arr->length++;
     }
 }
-void delete(int pos, struct Array *arr) // T.C:O(n)
+int delete(int pos, struct Array *arr) // T.C:O(n)
 {
+    int x;
+    x = arr->A[pos];
     if (arr->length == 0)
     {
         printf("Array is Empty");
@@ -61,6 +63,7 @@ void delete(int pos, struct Array *arr) // T.C:O(n)
         }
         arr->length--;
     }
+    return x;
 }
 int linearSearch(int key, struct Array arr) // T.c:O(n)
 {
@@ -276,20 +279,91 @@ struct Array *Merge(struct Array *arr1, struct Array *arr2) // T.C=O(m+n)
 
     return arr3;
 }
+struct Array *Union(struct Array *arr1, struct Array *arr2)
+{
+    int i, j, k;
+    i = j = k = 0;
+
+    struct Array *arr3 = (struct Array *)malloc(sizeof(struct
+                                                       Array));
+
+    while (i < arr1->length && j < arr2->length)
+    {
+        if (arr1->A[i] < arr2->A[j])
+            arr3->A[k++] = arr1->A[i++];
+        else if (arr2->A[j] < arr1->A[i])
+            arr3->A[k++] = arr2->A[j++];
+        else
+        {
+            arr3->A[k++] = arr1->A[i++];
+            j++;
+        }
+    }
+    for (; i < arr1->length; i++)
+        arr3->A[k++] = arr1->A[i];
+    for (; j < arr2->length; j++)
+        arr3->A[k++] = arr2->A[j];
+
+    arr3->length = k;
+    arr3->size = 10;
+
+    return arr3;
+}
 int main()
 {
-    int index, ele;
-    int n;
-    struct Array arr;
-    printf("Enter size of an array:");
-    scanf("%d", &arr.size);
-    arr.A = (int *)malloc(arr.size * sizeof(int)); // Array is created in heap
-    arr.length = 0;
-    printf("Enter number of numbers:");
-    scanf("%d", &n);
-    for (int i = 0; i < n; i++)
+    struct Array arr1;
+    int ch;
+    int x, index;
+
+    printf("Enter Size of Array:");
+    scanf("%d", &arr1.size);
+    arr1.A = (int *)malloc(arr1.size * sizeof(int));
+    arr1.length = 0;
+    do
     {
-        scanf("%d", &arr.A[i]);
-    }
-    arr.length = n;
+        printf("\n\nMenu\n");
+        printf("1. Insert\n");
+        printf("2. Delete\n");
+        printf("3. Search\n");
+        printf("4. Sum\n");
+        printf("5. Display\n");
+        printf("6.Exit\n");
+
+        printf("enter you choice ");
+        scanf("%d", &ch);
+
+        switch (ch)
+        {
+        case 1:
+            printf("Enter an element and index ");
+            scanf("%d%d", &x, &index);
+            insert(x, index, &arr1);
+            break;
+        case 2:
+            printf("Enter index ");
+            scanf("%d", &index);
+            x = delete (index, &arr1);
+            printf("Deleted Element is %d\n", x);
+            break;
+        case 3:
+            printf("Enter element to search ");
+            scanf("%d", &x);
+            index = linearSearch(x, arr1);
+            if (index == -1)
+            {
+                printf("\nElement not found !!!\n");
+            }
+            else
+            {
+                printf("Element index %d", index);
+            }
+            break;
+        case 4:
+            printf("Sum is %d\n", sum(arr1));
+            break;
+        case 5:
+            display(arr1);
+        }
+    } while (ch < 6);
+    return 0;
 }
