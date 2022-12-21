@@ -1,3 +1,6 @@
+/*1 1 1 Pattern 2
+2 2 2
+3 3 3*/
 #include <bits/stdc++.h>
 using namespace std;
 int main()
