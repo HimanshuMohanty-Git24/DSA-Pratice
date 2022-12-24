@@ -2,19 +2,25 @@
 using namespace std;
 int main()
 {
-    int n = 6;
-    int arr[n] = {1, 1, 8, 3, 4, 5, 3, 6, 7};
-    for (int i = 0; i < n - 1; i++)
+    int n;
+    cin >> n;
+    int arr[n];
+    for (int i = 0; i < n; i++) // input
+    {
+        cin >> arr[i];
+    }
+
+    for (int i = 0; i < n; i++)
     {
         int flag = 0;
         for (int j = 0; j < n; j++)
         {
-            if (arr[i] == arr[j])
+            if (arr[i] == arr[j]) // check the element with each element
             {
-                flag++;
+                flag++; // if flag iterates more than 1 then the element is not unique
             }
         }
-        if (flag == 0)
+        if (flag == 1) // checks and prints
         {
             cout << arr[i] << " ";
         }
