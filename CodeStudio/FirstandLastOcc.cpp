@@ -64,3 +64,13 @@ pair<int, int> firstAndLastPosition(vector<int> &arr, int n, int k)
 
     return p;
 }
+int main()
+{
+    vector<int> arr = {0, 5, 5, 6, 6, 6};
+    int size = arr.size();
+    int key;
+    cin >> key;
+    pair<int, int> ans = firstAndLastPosition(arr, size, key);
+    cout << ans.first << " ";
+    cout << ans.second << endl;
+}
