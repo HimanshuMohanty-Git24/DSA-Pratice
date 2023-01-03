@@ -13,11 +13,11 @@ bool isPossible(int barrier, vector<int> &weights, int days, int sum)
             WeightAllocated = weights[i];
         }
     }
-    if (DayCtr > days)
+    if (DayCtr <= days)
     {
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 int shipWithinDays(vector<int> &weights, int days)
 {
