@@ -144,5 +144,164 @@ int main()
         }
         cout<<endl;
     }
+    cout<<"Pattern 14:"<<endl;
+    for (int i = 1; i <= n; i++)
+    {
+        int space = n-i;
+        while(space){
+            cout<<" ";
+            space--;
+        }
+        for (int j = 1; j <= i; j++)
+        {
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+    cout<<"Pattern 15:"<<endl;
+    for (int i = 1; i <= n; i++)
+    {
+        int star = n-i+1;;
+        while(star){
+            cout<<"*";
+            star--;
+        }
+        for (int j = 1; j <= i; j++)
+        {
+            cout<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<"Pattern 16:"<<endl;
+    for (int i = 1; i <= n; i++)
+    {
+        int space = i-1;;
+        while(space){
+            cout<<" ";
+            space--;
+        }
+        for (int j = 1; j <= n-i+1; j++)
+        {
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+    cout<<"Pattern 17:"<<endl;
+    for (int i = 1; i <= n; i++)
+    {
+        int space = i-1;;
+        while(space){
+            cout<<" ";
+            space--;
+        }
+        for (int j = 1; j <= n-i+1; j++)
+        {
+            cout<<i;
+        }
+        cout<<endl;
+    }
+    cout<<"Pattern 18:"<<endl;
+    for (int i = 1; i <= n; i++)
+    {
+        int space = n-i;
+        while(space){
+            cout<<" ";
+            space--;
+        }
+        for (int j = 1; j <= i; j++)
+        {
+            cout<<i;
+        }
+        cout<<endl;
+    }
+    cout<<"Pattern 17:"<<endl;
+    for (int i = 1; i <= n; i++)
+    {
+        int val=i;
+        int space = i-1;;
+        while(space){
+            cout<<" ";
+            space--;
+        }
+        for (int j = 1; j <= n-i+1; j++)
+        {
+            cout<<val;
+            val++;
+        }
+        cout<<endl;
+    }
+    cout<<"Pattern 18:"<<endl;
+    int z=1;
+    for (int i = 1; i <= n; i++)
+    {
+        int space = n-i;
+        while(space){
+            cout<<" ";
+            space--;
+        }
+        for (int j = 1; j <= i; j++)
+        {
+            cout<<z;
+            z++;
+        }
+        cout<<endl;
+    }
+    cout<<"Pattern 19:"<<endl;
+    for (int i = 1; i <= n; i++)
+    {
+        int z=1;
+        int space = n-i;
+        while(space){
+            cout<<" ";
+            space--;
+        }
+        for (int j = 1; j <= i; j++)
+        {
+            cout<<z;
+            z++;
+        }
+        for (int k = i-1; k!=0; k--)
+        {
+            cout<<k;
+        }
+        cout<<endl;
+    }
+    cout<<"Pattern 20:"<<endl<<endl;
+    int i = 1;
+
+    while (i <= n)
+    {
+        int Lctr = 1;
+        int j = 1;
+        while (j <= n - i + 1) // Left Counter part
+        {
+            cout << Lctr;
+            Lctr++;
+            j++;
+        }
+        int Lstar = i - 1;
+        while (Lstar) // Left Star Part
+        {
+            cout << "*";
+            Lstar--;
+        }
+        int Rstar = i - 1;
+        while (Rstar) // Right Star Part
+        {
+            cout << "*";
+            Rstar--;
+        }
+        int Rctr = n - i + 1;
+        int k = 1;
+        while (k <= n - i + 1)
+        {
+            cout << Rctr;
+            Rctr--;
+            k++;
+        }
+
+        cout << endl;
+        i++;
+    }
    return 0;
 }
