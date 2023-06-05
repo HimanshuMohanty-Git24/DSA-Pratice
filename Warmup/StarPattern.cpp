@@ -53,5 +53,50 @@ int main()
         }
         cout << endl;
     }
+    cout<<"Pattern 6:"<<endl;
+    char c='A';
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+           cout<<c<<" ";
+        }
+        c++;
+        cout<<endl;
+    }
+    cout<<"Pattern 7:"<<endl;
+    for (int i = 0; i < n; i++)
+    {
+        char c='A';
+        for (int j = 0; j < n; j++)
+        {
+           cout<<c<<" ";
+           c++;
+        }
+        cout<<endl;
+    }
+    cout<<"Pattern 8:"<<endl;
+    char ch='A';
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+           cout<<ch<<" ";
+           ch++;
+        }
+        cout<<endl;
+    }
+    cout<<"Pattern 9:"<<endl;
+    int chr=65;
+    for (int i = 1; i <= n; i++)
+    {
+        char ch=chr+i-1;
+        for (int j = 1; j <= n; j++)
+        {
+           cout<<ch<<" ";
+           ch++;
+        }
+        cout<<endl;
+    }
    return 0;
 }
