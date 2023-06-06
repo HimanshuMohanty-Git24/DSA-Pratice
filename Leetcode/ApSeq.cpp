@@ -13,9 +13,9 @@ bool canMakeArithmeticProgression(vector<int>& arr) {
 }
 int main()
 {
-    vector<int> arr = {1,2,4};
-    bool ans=canMakeArithmeticProgression(arr);
-    if(ans){
+    vector<int> arr = {1,2,4};//Input array
+    bool ans=canMakeArithmeticProgression(arr);//Function call
+    if(ans){//Printing the result
         cout<<"true";
     }
     else{
