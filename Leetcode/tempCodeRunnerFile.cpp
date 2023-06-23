@@ -1,0 +1,1 @@
+cout << digitsNum << "=" << digits[i] << "=" << i << endl;
