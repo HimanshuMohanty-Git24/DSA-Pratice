@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "ostream": "cpp"
+        "*.embeddedhtml": "html",
+        "ostream": "cpp",
+        "ratio": "cpp"
     }
 }
