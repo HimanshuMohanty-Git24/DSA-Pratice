@@ -3,15 +3,16 @@
 using namespace std;
 string addBinary(string A, string B)
 {
+    // This is used to add the leading 000 so that both the stribg are equal size
     if (A.length() > B.length())
-        return addBinary(B, A);
+        return addBinary(B, A); // if alenth is > b length change the positinon of A ansd B
 
     int diff = B.length() - A.length();
-
+    // Make a padding string add the leading Zeros
     string padding;
     for (int i = 0; i < diff; i++)
         padding.push_back('0');
-
+    // Addin the leading zeros to make the string equal length
     A = padding + A;
     string res;
     char carry = '0';
@@ -44,12 +45,12 @@ string addBinary(string A, string B)
     }
     if (carry == '1')
         res.push_back(carry);
-    reverse(res.begin(), res.end());
-
+    reverse(res.begin(), res.end()); // Reversing the string a sthe answer we used PushBack function
+    // Removing Leading Zeros
     int index = 0;
     while (index + 1 < res.length() && res[index] == '0')
         index++;
-    return (res.substr(index));
+    return (res.substr(index)); // Returning the string to using the substring function
 }
 int main()
 {
