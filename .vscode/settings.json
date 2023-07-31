@@ -1,8 +1,15 @@
 {
     "files.associations": {
+        "*.ejs": "html",
         "*.embeddedhtml": "html",
         "ostream": "cpp",
         "ratio": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "array": "cpp",
+        "bitset": "cpp",
+        "initializer_list": "cpp",
+        "regex": "cpp",
+        "utility": "cpp",
+        "valarray": "cpp"
     }
 }
