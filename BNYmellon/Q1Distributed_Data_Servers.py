@@ -1,5 +1,5 @@
 #!/bin/python3
-
+#15/15 test cases passed
 import math
 import os
 import random
