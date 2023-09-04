@@ -66,7 +66,7 @@ public:
     }
   }
 };
-void Heapify(int arr[],int n,int i){
+void HeapifyMax(int arr[],int n,int i){
   int largest =i;
   int left=2*i;
   int right = 2*i+1;
@@ -78,7 +78,22 @@ void Heapify(int arr[],int n,int i){
   }
   if(largest!=i){
     swap(arr[i],arr[largest]);
-    Heapify(arr,n,largest);
+    HeapifyMax(arr,n,largest);
+  }
+}
+void HeapifyMin(int arr[],int n,int i){
+  int smallest =i;
+  int left=2*i;
+  int right = 2*i+1;
+  if(left<n&&arr[smallest]>arr[left]){
+    smallest=left;
+  }
+  if(right<n&&arr[smallest]>arr[right]){
+    smallest=right;
+  }
+  if(smallest!=i){
+    swap(arr[i],arr[smallest]);
+    HeapifyMin(arr,n,smallest);
   }
 }
 int main() {
@@ -103,7 +118,7 @@ int main() {
   int n=5;
   for (int i = n/2; i > 0; i--)
   {
-    Heapify(arr,n,i);
+    HeapifyMax(arr,n,i);
   }
   cout<<"Printing the array"<<endl;
   for(int i=1;i<=n;i++){
