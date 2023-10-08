@@ -45,6 +45,15 @@ void reverseArr(int *arr,int l,int h){
     swap(arr[l],arr[h]);
     reverseArr(arr,l+1,h-1);
 }
+bool palindrome(string s){
+    if(s.length()==0 || s.length()==1){
+        return true;
+    }
+    if(s[0]==s[s.length()-1]){
+        return palindrome(s.substr(1,s.length()-2));
+    }
+    return false;
+}
 int main()
 {
     Name(5);
@@ -62,5 +71,7 @@ int main()
     for(int i=0;i<10;i++){
         cout<<arr[i]<<" ";
     }
+    cout<<endl;
+    cout<<palindrome("MADSAM");
     return 0;
 }
