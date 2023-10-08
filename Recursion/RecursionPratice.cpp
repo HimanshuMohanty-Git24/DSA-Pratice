@@ -54,6 +54,12 @@ bool palindrome(string s){
     }
     return false;
 }
+int fibonacci(int n){
+    if(n==0 || n==1){
+        return n;
+    }
+    return fibonacci(n-1)+fibonacci(n-2);
+}//Timecomplexity: O(2^n)
 int main()
 {
     Name(5);
@@ -73,5 +79,8 @@ int main()
     }
     cout<<endl;
     cout<<palindrome("MADSAM");
+    cout<<endl;
+    cout<<fibonacci(7);
+    cout<<endl;
     return 0;
 }
