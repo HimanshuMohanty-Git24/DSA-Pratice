@@ -29,6 +29,8 @@ vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
     return ans;
 }//Time Complexity: O(nlogn+mlogm) Space Complexity: O(1)
 vector<int> intersectionReal(vector<int>& nums1, vector<int>& nums2) {
+        sort(nums1.begin(),nums1.end());
+        sort(nums2.begin(),nums2.end());
         int i=0;
         int j=0;
         int n=nums1.size();
@@ -49,6 +51,25 @@ vector<int> intersectionReal(vector<int>& nums1, vector<int>& nums2) {
         }
         return ans;
 }//Time Complexity: O(n+m) Space Complexity: O(1)
+//optimal solution
+vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        array<int,1001> counts;
+        counts.fill(0);
+        for(auto val: nums1)
+        {
+            ++counts[val];
+        }
+        vector<int> result;
+        for(auto val: nums2)
+        {
+            if(counts[val] > 0)
+            {
+                --counts[val];
+                result.push_back(val);
+            }
+        }
+        return result;
+}//Time Complexity: O(n+m) Space Complexity: O(n)
 int main()
 {
     vector<int> nums1 = {1,2,2,1};
