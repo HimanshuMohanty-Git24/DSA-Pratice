@@ -7,7 +7,7 @@ void rotate(vector<int>& nums, int k) {
         reverse(nums.begin(),nums.end());//reverse whole array
         reverse(nums.begin(),nums.begin()+k);//reverse from 0 to k
         reverse(nums.begin()+k,nums.end());//reverse from k to end
-}
+}//TimeComplexity:O(n) SpaceComplexity:O(1)
 //Without using any inbuit function
 void rotate1(vector<int>& nums, int k) {
         int n=nums.size();
@@ -28,7 +28,7 @@ void rotate1(vector<int>& nums, int k) {
         {
             nums[i]=temp[i];
         }
-}
+}//TimeComplexity:O(n) SpaceComplexity:O(k)
 int main()
 {
     vector<int> nums;
