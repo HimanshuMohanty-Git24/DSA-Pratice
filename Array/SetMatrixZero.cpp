@@ -45,8 +45,29 @@ vector<vector<int>> zeroMatrix(vector<vector<int>> &matrix, int n, int m) {
     }
 
     return matrix;
-}
+}//O(n*m) time and O(1) space
 
+//SOlution 2
+vector<vector<int>> zeroMatrix1(vector<vector<int>> &matrix, int n, int m){
+    int col[m]={0};
+    int row[n]={0};
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            if(matrix[i][j]==0){
+                col[j]=1;
+                row[i]=1;
+            }
+        }
+    }
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            if(col[j]==1 || row[i]==1){
+                matrix[i][j]=0;
+            }
+        }
+    }
+    return matrix;
+}//O(n*m) time and O(n+m) space
 int main()
 {
     vector<vector<int>> matrix = {{1, 1, 1}, {1, 0, 1}, {1, 1, 1}};
