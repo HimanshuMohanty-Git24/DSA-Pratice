@@ -1,27 +1,43 @@
-//576. Out of Boundary Paths
-#include<bits/stdc++.h>
+// 576. Out of Boundary Paths
+#include <bits/stdc++.h>
 using namespace std;
-int M=1e9+7;
-int solve(int n, int m, int maxMove, int startRow, int startColumn){
+int findPaths(int m, int n, int N, int x, int y)
+{
+    const int M = 1000000000 + 7;
+    vector<vector<int>> dp(m, vector<int>(n, 0));
+    dp[x][y] = 1;
+    int count = 0;
 
-    if(startColumn<0 || startColumn>=n || startRow<0 || startRow>=m)return 1;
+    for (int moves = 1; moves <= N; moves++)
+    {
+        vector<vector<int>> temp(m, vector<int>(n, 0));
 
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (i == m - 1)
+                    count = (count + dp[i][j]) % M;
+                if (j == n - 1)
+                    count = (count + dp[i][j]) % M;
+                if (i == 0)
+                    count = (count + dp[i][j]) % M;
+                if (j == 0)
+                    count = (count + dp[i][j]) % M;
+                temp[i][j] = (((i > 0 ? dp[i - 1][j] : 0) + (i < m - 1 ? dp[i + 1][j] : 0)) % M +
+                              ((j > 0 ? dp[i][j - 1] : 0) + (j < n - 1 ? dp[i][j + 1] : 0)) % M) %
+                             M;
+            }
+        }
+        dp = temp;
+    }
 
-    int up=0,down=0,left=0,right=0;
-    if(maxMove>0)up=solve(n, m, maxMove-1, startRow-1, startColumn);
-    if(maxMove>0)down=solve(n, m, maxMove-1, startRow+1, startColumn);
-    if(maxMove>0)left=solve(n, m, maxMove-1, startRow, startColumn-1);
-    if(maxMove>0)right=solve(n, m, maxMove-1, startRow, startColumn+1);
-
-    return (up+down+left+right)%M;
-}
-int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
-    return solve(n, m, maxMove, startRow, startColumn);
+    return count;
 }
 int main()
 {
-    int m,n,maxMove,startRow,startColumn;
-    cin>>m>>n>>maxMove>>startRow>>startColumn;
-    cout<<findPaths(m,n,maxMove,startRow,startColumn);
-   return 0;
+    int m, n, maxMove, startRow, startColumn;
+    cin >> m >> n >> maxMove >> startRow >> startColumn;
+    cout << findPaths(m, n, maxMove, startRow, startColumn);
+    return 0;
 }
