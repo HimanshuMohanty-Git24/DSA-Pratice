@@ -1,0 +1,1 @@
+cout<<maxA<<" "<<sum<<endl;
