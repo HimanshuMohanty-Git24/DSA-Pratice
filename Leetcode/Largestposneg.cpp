@@ -14,6 +14,19 @@ int findMaxK(vector<int> &nums)
     }
     return (l < r) ? nums[r] : -1;
 }
+// alternative method
+int findMaxK2(vector<int> &nums)
+{
+    int n = nums.size();
+    unordered_set<int> s(nums.begin(), nums.end());
+    int res = -1;
+    for (int i = 0; i < n; i++)
+    {
+        if (s.count(-nums[i]))
+            res = max(res, nums[i]);
+    }
+    return res;
+}
 int main()
 {
     vector<int> nums = {1, 2, 3, 4, 5, -1, -2, -3, -4, -5};
