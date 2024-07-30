@@ -18,9 +18,28 @@ int MPSA(vector<int>& nums){
     }
     return res;
 }
+int MPSA2(vector<int>& nums){
+    if(nums.size()==1){
+        return nums[0];
+    }
+    int res=INT_MIN;
+    int prefix=1,suffix=1;
+    for(int i=0;i<nums.size();i++){
+        prefix = prefix*nums[i];
+        suffix = suffix*nums[nums.size()-i-1];
+        res = max({prefix,suffix,res});
+        if(prefix==0){
+            prefix==1;
+        }
+        if(suffix==0){
+            suffix=1;
+        }
+    }
+    return res;
+}
 int main()
 {
     vector<int> nums = {0,10,10,10,10,10,10,10,10,10,-10,10,10,10,10,10,10,10,10,10,0};
-    cout<<MPSA(nums)<<endl;
+    cout<<MPSA2(nums)<<endl;
    return 0;
 }
