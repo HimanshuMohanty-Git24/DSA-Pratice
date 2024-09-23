@@ -1,13 +1,15 @@
 #include <iostream>
-#include <queue>
 #include <unordered_set>
+#include <unordered_map>
+#include <list>
 #include <vector>
 #include <iomanip>  // For table formatting
 
 using namespace std;
 
-void printTable(const vector<vector<int>> &frames, int pageFaults, int hits, int n) {
-    cout << "FIFO (First In First Out) Page Replacement\n";
+// Function to print the table of frames after each step
+void printTable(const vector<vector<int>>& frames, int pageFaults, int hits, int n) {
+    cout << "LRU (Least Recently Used) Page Replacement\n";  // LRU Full form
     cout << "\nPage Replacement Table:\n\n";
     cout << "Step\tPage\tFrames\n";
     for (int i = 0; i < n; i++) {
@@ -28,9 +30,10 @@ void printTable(const vector<vector<int>> &frames, int pageFaults, int hits, int
     cout << "Hit Rate: " << hitRate << endl;
 }
 
-void FIFOPageReplacement(int pages[], int n, int capacity) {
+void LRUPageReplacement(int pages[], int n, int capacity) {
     unordered_set<int> pageSet;  // To store the current pages in memory
-    queue<int> pageQueue;        // To maintain the order of pages (FIFO)
+    unordered_map<int, list<int>::iterator> pageMap;  // Map to store page references in the LRU cache
+    list<int> lruCache;          // List to store the least recently used order
     int pageFaults = 0;          // To count page faults
     int hits = 0;                // To count hits
 
@@ -44,27 +47,31 @@ void FIFOPageReplacement(int pages[], int n, int capacity) {
         if (pageSet.find(pages[i]) == pageSet.end()) {
             // Check if memory is full
             if (pageSet.size() == capacity) {
-                // Remove the first page (FIFO)
-                int pageToRemove = pageQueue.front();
-                pageQueue.pop();
-                pageSet.erase(pageToRemove);
+                // Remove the least recently used page (the back of the list)
+                int lruPage = lruCache.back();
+                lruCache.pop_back();
+                pageSet.erase(lruPage);
+                pageMap.erase(lruPage);
             }
-            // Add the new page into memory and queue
+            // Add the new page into memory and to the front of the list (most recently used)
             pageSet.insert(pages[i]);
-            pageQueue.push(pages[i]);
+            lruCache.push_front(pages[i]);
+            pageMap[pages[i]] = lruCache.begin();
             pageFaults++;  // Increment page fault count
         } else {
-            hits++;  // Increment hit count if page is already in memory
+            // Page is already present (a hit)
+            hits++;  // Increment hit count
+            // Move the page to the front of the list (most recently used)
+            lruCache.erase(pageMap[pages[i]]);
+            lruCache.push_front(pages[i]);
+            pageMap[pages[i]] = lruCache.begin();
         }
 
         // Copy the current state of memory (page frames)
         vector<int> tempFrame(capacity, -1);  // Temporary vector to store the frame state
-        queue<int> tempQueue = pageQueue;  // Copy of the queue for iteration
-
         int index = 0;
-        while (!tempQueue.empty()) {
-            tempFrame[index++] = tempQueue.front();  // Get the page at the front of the queue
-            tempQueue.pop();
+        for (auto it = lruCache.begin(); it != lruCache.end(); ++it) {
+            tempFrame[index++] = *it;
         }
 
         // Copy tempFrame to the table
@@ -83,8 +90,8 @@ int main() {
     int n = sizeof(pages) / sizeof(pages[0]);  // Number of pages
     int capacity = 3;  // Memory capacity (number of frames)
 
-    // Call the FIFO page replacement function
-    FIFOPageReplacement(pages, n, capacity);
+    // Call the LRU page replacement function
+    LRUPageReplacement(pages, n, capacity);
 
     return 0;
 }
